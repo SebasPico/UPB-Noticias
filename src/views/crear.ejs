@@ -1,0 +1,58 @@
+<%- include('partials/navbar') %>
+<style>
+  body { background: #0f172a; color: #e5e7eb; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  .container { max-width: 900px; margin: 0 auto; padding-bottom: 2rem; }
+  .page-title { font-size: 1.25rem; font-weight: 800; margin: 1rem 0; }
+  form { background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 1rem; display: grid; gap: .75rem; }
+  label { font-weight: 700; }
+  input, select, textarea { width: 100%; background: #0b1220; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 8px; padding: .6rem; }
+  textarea { min-height: 120px; }
+  .actions { display: flex; justify-content: flex-end; gap: .5rem; }
+  .btn { border: 1px solid #1f2937; background: #2563eb; color: #fff; text-decoration: none; padding: .6rem .9rem; border-radius: 8px; cursor: pointer; font-weight: 700; }
+  .btn:hover { background: #1d4ed8; }
+</style>
+
+<div class="container">
+  <div class="page-title">Crear Noticia</div>
+  <form action="/crearNoticia" method="post" enctype="multipart/form-data">
+    <div>
+      <label for="title">Nombre de la noticia</label>
+      <input type="text" id="title" name="title" required />
+    </div>
+    <div>
+      <label for="students">Nombre de los estudiantes</label>
+      <input type="text" id="students" name="students" placeholder="Separados por coma" required />
+    </div>
+    <div>
+      <label for="professor">Nombre del profesor</label>
+      <input type="text" id="professor" name="professor" required />
+    </div>
+    <div>
+      <label for="jornada">Jornada</label>
+      <select id="jornada" name="jornada" required>
+        <option value="1">Jornada 1</option>
+        <option value="2">Jornada 2</option>
+        <option value="3">Jornada 3</option>
+      </select>
+    </div>
+    <div>
+      <label for="subject">Asignatura del proyecto</label>
+      <input type="text" id="subject" name="subject" required />
+    </div>
+    <div>
+      <label for="content">Información de la noticia</label>
+      <textarea id="content" name="content" required></textarea>
+    </div>
+    <div>
+      <label for="comments">Comentarios de los docentes</label>
+      <textarea id="comments" name="comments"></textarea>
+    </div>
+    <div>
+      <label for="image">Imagen (máximo 10MB)</label>
+      <input type="file" id="image" name="image" accept="image/*" />
+    </div>
+    <div class="actions">
+      <button class="btn" type="submit">Publicar</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,59 @@
+<%- include('partials/navbar') %>
+<style>
+  body { background: #0f172a; color: #e5e7eb; }
+  .container { max-width: 1400px; margin: 0 auto; }
+  .page-title { font-size: 1.25rem; font-weight: 700; margin: 1rem 0; }
+  .subtitle { color: #9ca3af; margin-bottom: 1rem; }
+  .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 1.25rem; }
+  .card { background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 1rem; }
+  .card h2 { margin: 0 0 .5rem; font-size: 1.1rem; }
+  .meta { color: #9ca3af; font-size: .9rem; margin-bottom: .75rem; }
+  .card img { width: 100%; height: 240px; object-fit: cover; border-radius: 8px; margin: .5rem 0 1rem; }
+  .scroll-content { max-height: 220px; overflow-y: auto; padding-right: 4px; }
+  .pagination { display: flex; justify-content: center; gap: .5rem; margin: 1rem 0 2rem; }
+  .pagination a, .pagination span { background: #111827; border: 1px solid #1f2937; color: #e5e7eb; padding: .4rem .7rem; border-radius: 8px; text-decoration: none; font-weight: 700; }
+  .pagination .active { background: #2563eb; border-color: #2563eb; }
+</style>
+
+<div class="container">
+  <div class="page-title">Jornada <%= jornada %></div>
+  <div class="subtitle">Noticias y proyectos destacados</div>
+
+  <% if (!news || news.length === 0) { %>
+    <div class="card">No hay noticias para esta jornada todavía.</div>
+  <% } else { %>
+    <div class="news-grid">
+      <% news.forEach(function(item){ %>
+        <div class="card">
+          <h2><%= item.title %></h2>
+          <div class="meta">
+            Publicado: <%= new Date(item.publishedAt).toLocaleString('es-ES') %>
+            • Estudiantes: <%= item.students %>
+            • Profesor: <%= item.professor %>
+            • Asignatura: <%= item.subject %>
+          </div>
+          <div class="scroll-content">
+            <p><%= item.content %></p>
+            <% if (item.comments) { %>
+              <p style="color:#93c5fd;">Comentarios: <%= item.comments %></p>
+            <% } %>
+          </div>
+          <% if (item.imageBase64) { %>
+            <img src="data:image/*;base64,<%= item.imageBase64 %>" alt="imagen de la noticia" />
+          <% } %>
+        </div>
+      <% }) %>
+    </div>
+    <% if (typeof totalPages !== 'undefined' && totalPages > 1) { %>
+      <div class="pagination">
+        <% for (let i = 1; i <= totalPages; i++) { %>
+          <% if (i === page) { %>
+            <span class="active"><%= i %></span>
+          <% } else { %>
+            <a href="/jornada/<%= jornada %>?page=<%= i %>"><%= i %></a>
+          <% } %>
+        <% } %>
+      </div>
+    <% } %>
+  <% } %>
+</div>

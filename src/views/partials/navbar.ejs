@@ -1,0 +1,33 @@
+<nav class="navbar">
+  <div class="nav-content">
+    <div class="nav-left">
+      <a class="btn primary" href="/crearNoticia" role="button">Crear noticia</a>
+    </div>
+    <div class="nav-center">
+      <a class="btn" href="/jornada/1" role="button">JORNADA 1</a>
+      <a class="btn" href="/jornada/2" role="button">JORNADA 2</a>
+      <a class="btn" href="/jornada/3" role="button">JORNADA 3</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-brand">NOTICIAS UPB</div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap');
+  .navbar { position: sticky; top: 0; background: #0f172a; border-bottom: 1px solid #1f2937; margin-bottom: 1rem; }
+  .nav-content { display: flex; align-items: center; justify-content: space-between; padding: .75rem .5rem; color: #e5e7eb; }
+  .nav-content * { font-weight: 700; }
+  body, .navbar { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  .nav-left, .nav-center, .nav-right { flex: 1; }
+  .nav-left { display: flex; align-items: center; justify-content: flex-start; }
+  .nav-center { display: flex; gap: .5rem; justify-content: center; }
+  .nav-right { display: flex; justify-content: flex-end; align-items: center; padding-right: .5rem; }
+  .nav-brand { letter-spacing: .02em; }
+  .nav-left .btn.primary { margin-left: -.4rem; }
+  .btn { border: 1px solid #1f2937; background: #111827; color: #e5e7eb; text-decoration: none; padding: .5rem .8rem; border-radius: 6px; cursor: pointer; }
+  .btn:hover { background: #1f2937; }
+  .btn.primary { background: #2563eb; color: #fff; border-color: #2563eb; }
+  .btn.primary:hover { background: #1d4ed8; }
+</style>
