@@ -38,20 +38,28 @@ export class NewsController {
       return res.redirect('/jornada/1');
     }
     const all = await this.service.listByJornada(id);
+    const subjectParamRaw = (req.query.subject as string | undefined) ?? '';
+    const subjectParam = subjectParamRaw.trim();
+    let filtered = all;
+    if (id === 3 && subjectParam) {
+      const normalized = subjectParam.toLowerCase();
+      filtered = all.filter(n => n.subject.toLowerCase() === normalized);
+    }
     const pageSize = 6;
-    const total = all.length;
+    const total = filtered.length;
     const totalPages = Math.max(1, Math.ceil(total / pageSize));
     const pageParam = Number(req.query.page) || 1;
     const page = Math.min(Math.max(pageParam, 1), totalPages);
     const start = (page - 1) * pageSize;
-    const paged = all.slice(start, start + pageSize);
+    const paged = filtered.slice(start, start + pageSize);
     res.render('jornada', {
       title: `Jornada ${id}`,
       jornada: id,
       news: paged,
       page,
       totalPages,
-      total
+      total,
+      selectedSubject: subjectParam
     });
   };
 
