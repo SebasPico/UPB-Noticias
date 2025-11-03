@@ -1,4 +1,6 @@
 import { Request, Response } from 'express';
+import { promises as fs } from 'fs';
+import path from 'path';
 import { NewsService } from '../../application/services/NewsService';
 
 export class NewsController {
@@ -10,9 +12,21 @@ export class NewsController {
   };
 
   createJson = async (req: Request, res: Response) => {
-    const { title, content, professor, students, jornada, subject, comments, imageBase64 } = req.body ?? {};
+    const { title, content, professor, students, jornada, subject, comments, imageBase64, imageFilename } = req.body ?? {};
     if (!title || !content || !professor || !students || !jornada || !subject) {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
+    }
+    let filename: string | undefined = imageFilename;
+    // Soportar compatibilidad: si llega imageBase64 en JSON, guardamos archivo y usamos filename
+    if (!filename && typeof imageBase64 === 'string' && imageBase64.length > 0) {
+      const imagesDir = path.join(process.cwd(), 'public', 'images');
+      await fs.mkdir(imagesDir, { recursive: true });
+      const buf = Buffer.from(imageBase64.replace(/\s+/g, ''), 'base64');
+      const ext = buf.length >= 2 && buf[0] === 0xFF && buf[1] === 0xD8 ? 'jpg' : 'png';
+      const base = `news-${Date.now()}`;
+      filename = `${base}.${ext}`;
+      const outPath = path.join(imagesDir, filename);
+      await fs.writeFile(outPath, buf);
     }
     const created = await this.service.publishNews({
       title,
@@ -22,7 +36,7 @@ export class NewsController {
       jornada: Number(jornada) as 1 | 2 | 3,
       subject,
       comments: comments ?? '',
-      imageBase64
+      imageFilename: filename
     });
     res.status(201).json({ data: created });
   };
@@ -41,7 +55,7 @@ export class NewsController {
     const subjectParamRaw = (req.query.subject as string | undefined) ?? '';
     const subjectParam = subjectParamRaw.trim();
     let filtered = all;
-    if (id === 3 && subjectParam) {
+    if ((id === 3 || id === 2) && subjectParam) {
       const normalized = subjectParam.toLowerCase();
       filtered = all.filter(n => n.subject.toLowerCase() === normalized);
     }
@@ -72,14 +86,27 @@ export class NewsController {
     if (!title || !students || !professor || !jornada || !subject || !content) {
       return res.status(400).send('Faltan campos obligatorios');
     }
-    let imageBase64: string | undefined;
+    let imageFilename: string | undefined;
     const file: any = (req as any).file;
     if (file) {
       const size = file.size;
       if (size > 10 * 1024 * 1024) {
         return res.status(413).send('La imagen excede el límite de 10MB');
       }
-      imageBase64 = file.buffer.toString('base64');
+      const imagesDir = path.join(process.cwd(), 'public', 'images');
+      await fs.mkdir(imagesDir, { recursive: true });
+      const mime = String(file.mimetype || '').toLowerCase();
+      let ext = 'jpg';
+      if (mime.includes('png')) ext = 'png';
+      else if (mime.includes('gif')) ext = 'gif';
+      const baseSafe = String(title || `news-${Date.now()}`)
+        .toLowerCase()
+        .replace(/[^a-z0-9_-]+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+      imageFilename = `${baseSafe}-${Date.now()}.${ext}`;
+      const outPath = path.join(imagesDir, imageFilename);
+      await fs.writeFile(outPath, file.buffer);
     }
 
     const created = await this.service.publishNews({
@@ -90,7 +117,7 @@ export class NewsController {
       subject,
       content,
       comments: comments ?? '',
-      imageBase64
+      imageFilename
     });
     res.redirect(`/jornada/${created.jornada}`);
   };

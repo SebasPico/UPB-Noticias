@@ -7,6 +7,6 @@ export interface News {
   subject: string; // Asignatura del proyecto
   content: string; // Información de la noticia
   comments: string; // Comentarios de los docentes
-  imageBase64?: string; // Imagen en Base64 (<=10MB)
+  imageFilename?: string; // Nombre de archivo de la imagen en /public/images
   publishedAt: Date;
 }

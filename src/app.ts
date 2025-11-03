@@ -21,6 +21,8 @@ export function buildApp() {
   // Soportar layouts con ejs-mate-like mediante include manual; aquí usamos ejs con layout helper
   // Nota: EJS soporta layouts mediante ejs-locals, pero no lo añadimos para mantenerlo mínimo.
   (app.locals as any).layout = function layout(name: string) { /* no-op placeholder */ };
+  // Archivos estáticos (sirve /public, incluyendo /public/images)
+  app.use(express.static(path.join(process.cwd(), 'public')));
 
   // Inyección de dependencias (alta cohesión, bajo acoplamiento)
   const repo = new FileNewsRepository();

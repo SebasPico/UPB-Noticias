@@ -24,8 +24,8 @@
             <p>Comentarios: <%= item.comments %></p>
           <% } %>
         </div>
-        <% if (item.imageBase64) { %>
-          <img src="data:image/*;base64,<%= item.imageBase64 %>" alt="imagen de la noticia" />
+        <% if (item.imageFilename) { %>
+          <img src="/images/<%= item.imageFilename %>" alt="imagen de la noticia" />
         <% } %>
       </article>
     <% }) %>

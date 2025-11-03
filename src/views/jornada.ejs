@@ -39,6 +39,23 @@
       </form>
     </div>
   <% } %>
+  <% if (jornada === 2) { %>
+    <div class="filter-bar">
+      <form class="filter-form" method="get" action="/jornada/<%= jornada %>">
+        <label for="subject">Filtrar por asignatura:</label>
+        <input type="text" id="subject" name="subject" list="subjects" placeholder="Selecciona o escribe..." value="<%= (typeof selectedSubject !== 'undefined' && selectedSubject) ? selectedSubject : '' %>" />
+        <datalist id="subjects">
+          <option value="Estructura de datos"></option>
+          <option value="Ingeniería de software"></option>
+          <option value="Proyecto integrador 1"></option>
+        </datalist>
+        <button class="btn" type="submit">Filtrar</button>
+        <% if (selectedSubject) { %>
+          <a class="btn" href="/jornada/<%= jornada %>">Limpiar</a>
+        <% } %>
+      </form>
+    </div>
+  <% } %>
 
   <% if (!news || news.length === 0) { %>
     <div class="card">No hay noticias para esta jornada todavía.</div>
@@ -59,8 +76,8 @@
               <p style="color:#93c5fd;">Comentarios: <%= item.comments %></p>
             <% } %>
           </div>
-          <% if (item.imageBase64) { %>
-            <img src="data:image/*;base64,<%= item.imageBase64 %>" alt="imagen de la noticia" />
+          <% if (item.imageFilename) { %>
+            <img src="/images/<%= item.imageFilename %>" alt="imagen de la noticia" />
           <% } %>
         </div>
       <% }) %>

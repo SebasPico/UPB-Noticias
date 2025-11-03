@@ -25,7 +25,7 @@ export class NewsService {
     subject: string;
     content: string;
     comments: string;
-    imageBase64?: string;
+    imageFilename?: string;
     publishedAt?: Date;
   }): Promise<News> {
     const publishedAt = input.publishedAt ?? new Date();
