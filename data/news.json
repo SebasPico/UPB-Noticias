@@ -273,5 +273,121 @@
     "comments": "Tienen un pequeño fallo de redacción en el objetivo general, ya que ellos no gestionan la energía renovable.\r\nTuvieron varios errores en el marco tecnológico, además de que no coloraron referencias.",
     "publishedAt": "2025-11-03T00:22:35.388Z",
     "imageFilename": "ecophos.jpeg"
+  },
+  {
+    "title": "Centro De Agroindustria Inteligente - Agrotechnova",
+    "students": "Valero Quevedo Alexer Mauricio, Suarez Suarez Claudia Natalia, Gonzalez Angulo Ivan Mateo, Almeida Rincon Johan Sebastian, Villamizar Gomez Leonel David, Arenales Peña Ronald Eduardo",
+    "professor": "Sandra Pilar Reyes Hernandez",
+    "jornada": 2,
+    "subject": "Proyecto Integrador 1",
+    "content": "Es una plataforma web creada para ayudar a la industria agrónoma, cabe recalcar que no usaron frameworks en web, y se basaron en únicamente HTML css y Javascript.",
+    "comments": "No hubo comentarios",
+    "imageFilename": "centro-de-agroindustria-inteligente-agrotechnova-1762131291661.jpg",
+    "publishedAt": "2025-11-03T00:54:51.662Z",
+    "id": "1762131291663"
+  },
+  {
+    "title": "Grupo 6 - ARRYN",
+    "students": "Julián Camilo Gómez Manotas, Juan David Monsalve Niño, Nicolas Rodríguez Acevedo, Sofia Santis Silva, Tomas Uribe Sanchez",
+    "professor": "Sanith Patricia Solorzano Escobar",
+    "jornada": 1,
+    "subject": "Proyecto Integrador 2",
+    "content": "El grupo cumplió todas las historias comprometidas en el sprint dos\r\n\r\nArryn es una pagina web de venta de productos tecnológicos que ha en diferentes tiendas en una única plataforma.",
+    "comments": "Los profesores comentan que por su forma de hablar hubo mucho individualismo, no parece que hubieran trabajado en equipo.",
+    "imageFilename": "grupo-6-arryn-1762194457092.jpg",
+    "publishedAt": "2025-11-03T18:27:37.095Z",
+    "id": "1762194457096"
+  },
+  {
+    "title": "Lannister NEWS",
+    "students": "Samuel Arango Diaz, Juan Manuel Guerrero Rueda, Wilson Andrés Moreno Velandia, Néstor Stiven Pabón Flórez, Sergio Alejandro Sanabria Moreno",
+    "professor": "Danith Patricia Solorzano Escobar",
+    "jornada": 1,
+    "subject": "Proyecto Integrador 2",
+    "content": "Hicieron una aplicación que implementa el modelo mBert para generar un traducción con IA de las noticias las cuales las traen con web scrapping, tienen modo oscuro y modo claro.",
+    "comments": "Al principio estaban muy enredados y tenía varias muletillas, pero fueron recuperando el ritmo.",
+    "imageFilename": "lannister-news-1762194916864.jpg",
+    "publishedAt": "2025-11-03T18:35:16.866Z",
+    "id": "1762194916867"
+  },
+  {
+    "title": "Equipo STARK",
+    "students": "Juan Sebastián Granados Jaimes, Juan Carlos Niño Osorio, Leyder Steven Ortiz Jaimes, Jorge Luis Osorio Silva, Carlos Alberto Quintero Arias",
+    "professor": "Danith Patricia Solorzano Escobar",
+    "jornada": 1,
+    "subject": "Proyecto Integrador 2",
+    "content": "s una página web de finanzas que utiliza web scrapping para traer noticias de finanzas desde la página de Google NEWS por medio de las etiquetas HTML de las mismas y las junta en la página para centralizarlas, cuenta con un chatbot, se pueden visualizar métricas sobre las finanzas que queramos como por ejemplo de Amazon, puede consultar la noticia completa en el portal original por medio de un link. En el chatbot podemos resolver cualquier pregunta o duda sobre la página web.",
+    "comments": "Explicaron de manera clara su proyecto, respondieron muy bien a las preguntas.",
+    "imageFilename": "equipo-stark-1762195162823.jpg",
+    "publishedAt": "2025-11-03T18:39:22.825Z",
+    "id": "1762195162826"
+  },
+  {
+    "title": "Equipo TARGARYEN",
+    "students": "Juan Andres Contreras Hernandez, Karol Nicol Dayanna Lizarazo Ortiz, Raul Ferney Lozano Navarro, Maria Angelica Parra Grazt, Jerson Arley Porras Lozano",
+    "professor": "Danith Patricia Solorzano Escobar",
+    "jornada": 1,
+    "subject": "Proyecto Integrador 2",
+    "content": "Es una web educativa que con ayuda de webscarpping extrae y organiza el material educativo en la página web de learnIA, su objetivo era traer al menos 10000 cursos de material educativo.",
+    "comments": "Su proyecto tuvo un diseño muy bueno, se veía todo bien, pero no expusieron en el tiempo previsto, y tuvieron varias muletillas y errores en las diapositivas, como en un objetivo general.",
+    "imageFilename": "equipo-targaryen-1762195433711.jpg",
+    "publishedAt": "2025-11-03T18:43:53.712Z",
+    "id": "1762195433713"
+  },
+  {
+    "title": "Equipo TYREL",
+    "students": "Daniel Felipe Agilar Latorre, Cristian Andres Gomez Jaimes, Cristian Camli Plata Rodrígue, Rober Julián Quintero Oviedo, Juan Pablo Silva Vásquez",
+    "professor": "Danith Patricia Solorzano Escobar",
+    "jornada": 1,
+    "subject": "Proyecto Integrador 2",
+    "content": "Hicieron una app web que implementa un chatbot el cual busca los mejores descuentos posibles en tiempo real, según indican hay un modo invitado y un modo usuario, que de igual forma no guarda información de lo que se ha buscado, sin embargo cuando estás logrado se guardan las conversaciones anteriores",
+    "comments": "Hubo varios errores con los diagramas que presentaron, varios tenían errores de como tenían las fechas, o incluso las cajas, no se entendía bien",
+    "imageFilename": "equipo-tyrel-1762195778709.jpg",
+    "publishedAt": "2025-11-03T18:49:38.710Z",
+    "id": "1762195778712"
+  },
+  {
+    "title": "Nueva",
+    "content": "Contenido",
+    "professor": "Profe Ejemplar",
+    "students": "Ana, Juan",
+    "jornada": 1,
+    "subject": "Estructura de datos",
+    "comments": "Opcional",
+    "publishedAt": "2025-11-03T23:38:01.426Z",
+    "id": "1762213081427"
+  },
+  {
+    "title": "Nueva",
+    "content": "Contenido",
+    "professor": "Profe Ejemplar",
+    "students": "Ana, Juan",
+    "jornada": 1,
+    "subject": "Estructura de datos",
+    "comments": "Opcional",
+    "publishedAt": "2025-11-03T23:38:45.777Z",
+    "id": "1762213125778"
+  },
+  {
+    "title": "Nueva",
+    "content": "Contenido",
+    "professor": "Profe Ejemplar",
+    "students": "Ana, Juan",
+    "jornada": 1,
+    "subject": "Estructura de datos",
+    "comments": "Opcional",
+    "publishedAt": "2025-11-03T23:41:06.415Z",
+    "id": "1762213266416"
+  },
+  {
+    "title": "Nueva",
+    "content": "Contenido",
+    "professor": "Profe Ejemplar",
+    "students": "Ana, Juan",
+    "jornada": 1,
+    "subject": "Estructura de datos",
+    "comments": "Opcional",
+    "publishedAt": "2025-11-04T00:13:06.787Z",
+    "id": "1762215186788"
   }
 ]

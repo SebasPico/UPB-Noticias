@@ -11,20 +11,18 @@ import multer from 'multer';
 export function buildApp() {
   const app = express();
 
-  // Middlewares
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  // Vista y plantillas (MVT)
   app.set('views', path.join(process.cwd(), 'src', 'views'));
   app.set('view engine', 'ejs');
-  // Soportar layouts con ejs-mate-like mediante include manual; aquí usamos ejs con layout helper
-  // Nota: EJS soporta layouts mediante ejs-locals, pero no lo añadimos para mantenerlo mínimo.
-  (app.locals as any).layout = function layout(name: string) { /* no-op placeholder */ };
-  // Archivos estáticos (sirve /public, incluyendo /public/images)
+
+  (app.locals as any).layout = function layout(name: string) {};
+
+  // Archivos estáticos 
   app.use(express.static(path.join(process.cwd(), 'public')));
 
-  // Inyección de dependencias (alta cohesión, bajo acoplamiento)
+  // Inyección de dependencias
   const repo = new FileNewsRepository();
   const service = new NewsService(repo);
   const controller = new NewsController(service);
@@ -32,12 +30,13 @@ export function buildApp() {
   // Rutas
   app.use('/api', createApiRoutes(controller));
   app.use('/', createWebRoutes(controller));
-  // Crear Noticia: formulario y POST con imagen (<=10MB)
+
+  // Crear Noticia:
   const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 10 * 1024 * 1024 } });
   app.get('/crearNoticia', controller.createFormPage);
   app.post('/crearNoticia', upload.single('image'), controller.createPagePost);
 
-  // Salud
+  // Se comprueba que el servidor esté prendido
   app.get('/health', (_req, res) => res.json({ ok: true }));
 
   return app;
