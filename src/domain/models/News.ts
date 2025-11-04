@@ -10,3 +10,4 @@ export interface News {
   imageFilename?: string; // Nombre de archivo de la imagen en /public/images
   publishedAt: Date;
 }
+//interfaz de la noticia

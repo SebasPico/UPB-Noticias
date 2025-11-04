@@ -31,7 +31,7 @@ export function buildApp() {
   app.use('/api', createApiRoutes(controller));
   app.use('/', createWebRoutes(controller));
 
-  // Crear Noticia:
+  // Crear Noticia
   const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 10 * 1024 * 1024 } });
   app.get('/crearNoticia', controller.createFormPage);
   app.post('/crearNoticia', upload.single('image'), controller.createPagePost);

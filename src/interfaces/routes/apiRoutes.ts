@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { NewsController } from '../controllers/NewsController';
 
+//Rutas
 export function createApiRoutes(controller: NewsController): Router {
   const router = Router();
   router.get('/news', controller.listJson);

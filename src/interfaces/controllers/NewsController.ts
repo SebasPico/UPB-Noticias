@@ -17,6 +17,7 @@ export class NewsController {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
     }
     let filename: string | undefined = imageFilename;
+
     // Soportar compatibilidad: si llega imageBase64 en JSON, guardamos archivo y usamos filename
     if (!filename && typeof imageBase64 === 'string' && imageBase64.length > 0) {
       const imagesDir = path.join(process.cwd(), 'public', 'images');
@@ -46,6 +47,7 @@ export class NewsController {
     res.render('index', { title: 'Noticias UPB', news: data });
   };
 
+  //Aquí se hace el filtro de las noticias, además de la paginación
   jornadaPage = async (req: Request, res: Response) => {
     const id = Number(req.params.id) as 1 | 2 | 3;
     if (![1, 2, 3].includes(id)) {
@@ -81,6 +83,7 @@ export class NewsController {
     res.render('crear', { title: 'Crear Noticia' });
   };
 
+  //Funcionalidad para crear la noticia
   createPagePost = async (req: Request, res: Response) => {
     const { title, students, professor, jornada, subject, content, comments } = req.body ?? {};
     if (!title || !students || !professor || !jornada || !subject || !content) {
@@ -108,7 +111,7 @@ export class NewsController {
       const outPath = path.join(imagesDir, imageFilename);
       await fs.writeFile(outPath, file.buffer);
     }
-
+    //Se validan los campos obligatorios
     const created = await this.service.publishNews({
       title,
       students,

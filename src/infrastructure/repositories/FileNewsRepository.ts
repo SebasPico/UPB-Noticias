@@ -9,7 +9,7 @@ export class FileNewsRepository implements NewsRepository {
   constructor(fileRelativePath = path.join('data', 'news.json')) {
     this.filePath = path.join(process.cwd(), fileRelativePath);
   }
-
+  //Se asegura que exista el archivo y si no, lo crea
   private async ensureFile() {
     const dir = path.dirname(this.filePath);
     await fs.mkdir(dir, { recursive: true });
@@ -19,7 +19,7 @@ export class FileNewsRepository implements NewsRepository {
       await fs.writeFile(this.filePath, JSON.stringify([]), 'utf-8');
     }
   }
-
+  //Convierte la fecha de publicación de string a Date
   private revive(items: any[]): News[] {
     return items.map((n) => ({ ...n, publishedAt: new Date(n.publishedAt) }));
   }
@@ -31,11 +31,12 @@ export class FileNewsRepository implements NewsRepository {
     return this.revive(arr);
   }
 
+  //Busca la noticia por su id
   async findById(id: string): Promise<News | null> {
     const all = await this.list();
     return all.find((n) => n.id === id) ?? null;
   }
-
+  //crea la noticia y la guarda en el archivo
   async create(news: Omit<News, 'id'>): Promise<News> {
     await this.ensureFile();
     const raw = await fs.readFile(this.filePath, 'utf-8');
